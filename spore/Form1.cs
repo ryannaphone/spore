@@ -37,7 +37,7 @@ namespace spore
                 {
                     newCreatures[i - 1] = creatures[i]; // set each newCreature to the corresponding creature
                 }
-            } 
+            }
             else if (index == creatures.Length - 1) // handle the case where we are removing the last creature
             {
                 for (int i = 0; i < creatures.Length - 1; i++) // create a for loop that goes from 0 to the second to last creature in the array
@@ -64,13 +64,13 @@ namespace spore
             ageCreatures();
             label1.Text = creatures.Length.ToString();
             listBox1.Items.Clear(); // remove the list of creatures from the listBox
-            for (int i = 0; i < creatures.Length;i++) // for each creature ...
+            for (int i = 0; i < creatures.Length; i++) // for each creature ...
             {
                 listBox1.Items.Add(creatures[i].ToString()); // ... add the toString to the listBox
             }
             yearLabel.Text = year.ToString();
             year++;
-            
+
         }
 
         public void ageCreatures() // call this method to age all creatures
@@ -80,21 +80,23 @@ namespace spore
             {
                 for (int i = 0; i < creatures.Length; i++) // go through each creature using a for loop
                 {
+                    creatures[i].age++;
                     double randomDoub = r.NextDouble(); // create a random double
                     if (randomDoub < creatures[i].deathRate) // if the random double is greater than the deathRate of our creature...
                     {
                         //label1.Text = "Creature destroyed " + randomDoub.ToString(); // this was for debugging >:{
                         creatures = removeCreatures(creatures, i); // the creature dies.
                     }
+
                 }
             }
         }
 
         public Creature randomCreature() // call this method to create a random creature
         {
-           
+
             Random rand = new Random();
-            int r = rand.Next(10); // create a random integer
+            int r = rand.Next(100); // create a random integer
             String name; // we need a name for our random creature
             double deathRate; // and a death rate for our creature
             double birthRate = 1; // we haven't implemented our birth rate yet, so lets just put it to 1
@@ -117,17 +119,76 @@ namespace spore
                     name = "Gandalf"; // This creature is called Gandalf
                     deathRate = 0.001; // Gandalf is special
                     break;
+
+                case 4:
+                    name = "Finn";
+                    deathRate = rand.NextDouble() / 2;
+                    break;
                 default: // this will be the default case
                          // (So this is the case where r is not handled by another case, in other words, when r is a number other than 0, 1, 2, or 3)
                     name = "Barry";  // default creatures will be named Barry;
                     deathRate = 0.1; // Default Barrys will have a default death rate of 0.1
                     break;
-             }
-            
-            
+            }
+
+
             Creature c = new Creature(name, birthRate, deathRate); // now we actually create our creature with the values we picked above
             c.ToString(); // this statement was used for debugging.
             return c; // return the finished random creature so we can use it
+        }
+
+        private void speedUpButton_Click(object sender, EventArgs e)
+        {
+            if (timer1.Interval - 100 > 0) timer1.Interval -= 100;
+            else if (timer1.Interval - 10 > 0) timer1.Interval -= 10;
+        }
+
+        private void speedDownButton_Click(object sender, EventArgs e)
+        {
+            if (timer1.Interval + 100 < 5000) timer1.Interval += 100;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10000; i++)
+            {
+                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (timer1.Enabled)
+            {
+                timer1.Stop();
+            } else
+            {
+                timer1.Start();
+            }
         }
     }
 }
