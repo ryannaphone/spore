@@ -3,6 +3,7 @@ namespace spore
     public partial class Form1 : Form
     {
         Creature[] creatures = new Creature[0]; // declare our creature arrary, we will use it later
+        public int year = 1;
         public Form1()
         {
             InitializeComponent(); // create our window elements and stuff
@@ -67,7 +68,8 @@ namespace spore
             {
                 listBox1.Items.Add(creatures[i].ToString()); // ... add the toString to the listBox
             }
-            
+            yearLabel.Text = year.ToString();
+            year++;
             
         }
 
