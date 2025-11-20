@@ -82,7 +82,7 @@ namespace spore
                 {
                     creatures[i].age++;
                     double randomDoub = r.NextDouble(); // create a random double
-                    if (randomDoub < creatures[i].deathRate) // if the random double is greater than the deathRate of our creature...
+                    if (willCreatureDie(creatures[i])) // if the random double is greater than the deathRate of our creature...
                     {
                         //label1.Text = "Creature destroyed " + randomDoub.ToString(); // this was for debugging >:{
                         creatures = removeCreatures(creatures, i); // the creature dies.
@@ -189,6 +189,22 @@ namespace spore
             {
                 timer1.Start();
             }
+        }
+
+        public Boolean willCreatureDie(Creature c)
+        {
+            Random r = new Random();
+            double randomDoub = r.NextDouble(); // create a random double
+            for (int i = 0; i < c.age; i++) 
+            { 
+                if (randomDoub < c.deathRate) // if the random double is greater than the deathRate of our creature...
+                {
+                    //label1.Text = "Creature destroyed " + randomDoub.ToString(); // this was for debugging >:{
+                    return true; // the creature dies.
+                }
+            }
+
+            return false;
         }
     }
 }
