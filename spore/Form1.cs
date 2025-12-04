@@ -98,41 +98,42 @@ namespace spore
             Random rand = new Random();
             int r = rand.Next(100); // create a random integer
             String name; // we need a name for our random creature
-            double deathRate; // and a death rate for our creature
+            Func<int, double> deathChance; // and a death rate for our creature
             double birthRate = 1; // we haven't implemented our birth rate yet, so lets just put it to 1
+            double deathRate;
             switch (r) // lets handle each instance of r with a switch case 
             {
                 case 0: // if r is 0, lets do this
                     name = "Jim"; // in case 0, this creature will be named Jim
-                    deathRate = rand.NextDouble(); // the death rate will be random
+                    deathRate = rand.NextDouble();
+                    deathChance = (int age) => deathRate; // the death rate will be random
                     break; // this 'break' statement causes us to skip past the other cases and finish the rest method
-
                 case 1: // if r is 1, lets do this
                     name = "Etta"; // in case 1, this creature will be named Etta
-                    deathRate = 0.123; // this creature will have a death rate of 0.123
+                    deathChance = (int age) => 0.123; // static death rate of 12.3%
                     break;
                 case 2: // if r is 2, lets do this
                     name = "bell"; // this creature will be named bell
-                    deathRate = 0.22; // all bell's will have a death rate of 0.22
+                    deathChance = (int age) => 0.22; // static death rate of 22%
                     break;
                 case 3: // if r is 3, lets do this
                     name = "Gandalf"; // This creature is called Gandalf
-                    deathRate = 0.001; // Gandalf is special
+                    deathChance = (int age) => 0.001; // Gandalf is special
                     break;
-
                 case 4:
                     name = "Finn";
-                    deathRate = rand.NextDouble() / 2;
+					deathRate = rand.NextDouble() / 2;
+					deathChance = (int age) => deathRate;
                     break;
                 default: // this will be the default case
-                         // (So this is the case where r is not handled by another case, in other words, when r is a number other than 0, 1, 2, or 3)
+                         // (So this is the case where r is not handled by another case, in other words, when r is a number other than 0, 1, 2, 3, or 4)
                     name = "Barry";  // default creatures will be named Barry;
-                    deathRate = 0.1; // Default Barrys will have a default death rate of 0.1
+                    deathChance = (int age) => 0.1; // static death rate of 10%
                     break;
             }
 
 
-            Creature c = new Creature(name, birthRate, deathRate); // now we actually create our creature with the values we picked above
+            Creature c = new Creature(name, birthRate, deathChance); // now we actually create our creature with the values we picked above
             c.ToString(); // this statement was used for debugging.
             return c; // return the finished random creature so we can use it
         }
@@ -185,7 +186,8 @@ namespace spore
             if (timer1.Enabled)
             {
                 timer1.Stop();
-            } else
+            }
+            else
             {
                 timer1.Start();
             }
@@ -195,9 +197,9 @@ namespace spore
         {
             Random r = new Random();
             double randomDoub = r.NextDouble(); // create a random double
-            for (int i = 0; i < c.age; i++) 
-            { 
-                if (randomDoub < c.deathRate) // if the random double is greater than the deathRate of our creature...
+            for (int i = 0; i < c.age; i++)
+            {
+                if (randomDoub < c.deathChance(c.age)) // if the random double is greater than the deathChance of our creature...
                 {
                     //label1.Text = "Creature destroyed " + randomDoub.ToString(); // this was for debugging >:{
                     return true; // the creature dies.
