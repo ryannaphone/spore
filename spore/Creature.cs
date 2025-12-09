@@ -19,7 +19,7 @@ namespace spore
             this.name = "Creature"; // this creatures name is 'Creature'
             this.age = 0;
             this.birthRate = 1; // this creature has a birth rate of 1
-            this.deathChance = (int age) => 0.1; // this creature has a death rate of 0.1
+            this.deathChance = age => 0.1; // this creature has a death rate of 0.1
         }
 
         public Creature(string name, double birthRate, Func<int, double> deathChance) // this constructor is a bit more complicated, 
@@ -28,7 +28,7 @@ namespace spore
             this.age = 0;
             this.birthRate = birthRate;
             this.deathChance = deathChance;
-		}
+        }
 
         public Creature(string name, int age, double birthRate, Func<int, double> deathChance)
         {
@@ -40,7 +40,7 @@ namespace spore
 
         public override string ToString()
         {
-            return String.Concat(this.name + " the " + this.age + " year old creature");
+            return this.name + " the " + this.age + " year old creature";
         }
     }
 }

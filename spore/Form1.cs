@@ -2,7 +2,7 @@ namespace spore
 {
     public partial class Form1 : Form
     {
-        Creature[] creatures = new Creature[0]; // declare our creature arrary, we will use it later
+        Creature[] creatures = []; // declare our creature arrary, we will use it later
         public int year = 1;
         public Form1()
         {
@@ -15,7 +15,7 @@ namespace spore
             creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
         }
 
-        public Creature[] extendCreatures(Creature[] creatures, Creature c)
+        public static Creature[] extendCreatures(Creature[] creatures, Creature c)
         {
             Creature[] newCreatures = new Creature[creatures.Length + 1]; // create a new array to store our expanded array of creatues
 
@@ -23,11 +23,11 @@ namespace spore
             {
                 newCreatures[i] = creatures[i]; //set the new array item to the old array item
             }
-            newCreatures[newCreatures.Length - 1] = c; // add our new creature to the end of the array
+            newCreatures[^1] = c; // add our new creature to the end of the array
             return newCreatures; // return the new array
         }
 
-        public Creature[] removeCreatures(Creature[] creatures, int index)
+        public static Creature[] removeCreatures(Creature[] creatures, int index)
         {
             Creature[] newCreatures = new Creature[creatures.Length - 1]; // create a new array to store our reduced array of creatues
 
@@ -75,13 +75,11 @@ namespace spore
 
         public void ageCreatures() // call this method to age all creatures
         {
-            Random r = new Random(); // create new random object 
             if (creatures.Length > 0) // only execute this code if there are creatures
             {
                 for (int i = 0; i < creatures.Length; i++) // go through each creature using a for loop
                 {
                     creatures[i].age++;
-                    double randomDoub = r.NextDouble(); // create a random double
                     if (willCreatureDie(creatures[i])) // if the random double is greater than the deathRate of our creature...
                     {
                         //label1.Text = "Creature destroyed " + randomDoub.ToString(); // this was for debugging >:{
@@ -92,9 +90,9 @@ namespace spore
             }
         }
 
-        public Creature randomCreature() // call this method to create a random creature
+        public static Creature randomCreature() // call this method to create a random creature
         {
-            Random rand = new Random();
+            Random rand = new(); // create new random object
             int r = rand.Next(100); // create a random integer
             String name; // we need a name for our random creature
             Func<int, double> deathChance; // and a death rate for our creature
@@ -105,34 +103,34 @@ namespace spore
                 case 0: // if r is 0, lets do this
                     name = "Jim"; // in case 0, this creature will be named Jim
                     deathRate = rand.NextDouble();
-                    deathChance = (int age) => deathRate; // the death rate will be random
+                    deathChance = age => deathRate; // the death rate will be random
                     break; // this 'break' statement causes us to skip past the other cases and finish the rest method
                 case 1: // if r is 1, lets do this
                     name = "Etta"; // in case 1, this creature will be named Etta
-                    deathChance = (int age) => 0.123; // static death rate of 12.3%
+                    deathChance = age => 0.123; // static death rate of 12.3%
                     break;
                 case 2: // if r is 2, lets do this
                     name = "bell"; // this creature will be named bell
-                    deathChance = (int age) => 0.22; // static death rate of 22%
+                    deathChance = age => 0.22; // static death rate of 22%
                     break;
                 case 3: // if r is 3, lets do this
                     name = "Gandalf"; // This creature is called Gandalf
-                    deathChance = (int age) => 0.001; // Gandalf is special
+                    deathChance = age => 0.001; // Gandalf is special
                     break;
                 case 4:
                     name = "Finn";
                     deathRate = rand.NextDouble() / 2;
-                    deathChance = (int age) => deathRate;
+                    deathChance = age => deathRate;
                     break;
                 default: // this will be the default case
                          // (So this is the case where r is not handled by another case, in other words, when r is a number other than 0, 1, 2, 3, or 4)
                     name = "Barry";  // default creatures will be named Barry;
-                    deathChance = (int age) => 0.1; // static death rate of 10%
+                    deathChance = age => 0.1; // static death rate of 10%
                     break;
             }
 
 
-            Creature c = new Creature(name, birthRate, deathChance); // now we actually create our creature with the values we picked above
+            Creature c = new(name, birthRate, deathChance); // now we actually create our creature with the values we picked above
             c.ToString(); // this statement was used for debugging.
             return c; // return the finished random creature so we can use it
         }
@@ -192,9 +190,9 @@ namespace spore
             }
         }
 
-        public Boolean willCreatureDie(Creature c)
+        public static Boolean willCreatureDie(Creature c)
         {
-            Random r = new Random();
+            Random r = new();
             double randomDoub = r.NextDouble(); // create a random double
             if (randomDoub < c.deathChance(c.age)) // if the random double is greater than the deathChance of our creature...
             {
