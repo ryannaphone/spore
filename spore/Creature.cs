@@ -29,6 +29,13 @@ namespace spore
             this.birthRate = birthRate;
             this.deathChance = deathChance;
         }
+        public Creature(string name, double birthRate, double deathChance) // this constructor is a bit more complicated, 
+        {
+            this.name = name;
+            this.age = 0;
+            this.birthRate = birthRate;
+            this.deathChance = age => deathChance;
+        }
 
         public override string ToString()
         {
