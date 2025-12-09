@@ -94,7 +94,6 @@ namespace spore
 
         public Creature randomCreature() // call this method to create a random creature
         {
-
             Random rand = new Random();
             int r = rand.Next(100); // create a random integer
             String name; // we need a name for our random creature
@@ -122,8 +121,8 @@ namespace spore
                     break;
                 case 4:
                     name = "Finn";
-					deathRate = rand.NextDouble() / 2;
-					deathChance = (int age) => deathRate;
+                    deathRate = rand.NextDouble() / 2;
+                    deathChance = (int age) => deathRate;
                     break;
                 default: // this will be the default case
                          // (So this is the case where r is not handled by another case, in other words, when r is a number other than 0, 1, 2, 3, or 4)
@@ -197,13 +196,10 @@ namespace spore
         {
             Random r = new Random();
             double randomDoub = r.NextDouble(); // create a random double
-            for (int i = 0; i < c.age; i++)
+            if (randomDoub < c.deathChance(c.age)) // if the random double is greater than the deathChance of our creature...
             {
-                if (randomDoub < c.deathChance(c.age)) // if the random double is greater than the deathChance of our creature...
-                {
-                    //label1.Text = "Creature destroyed " + randomDoub.ToString(); // this was for debugging >:{
-                    return true; // the creature dies.
-                }
+                //label1.Text = "Creature destroyed " + randomDoub.ToString(); // this was for debugging >:{
+                return true; // the creature dies.
             }
 
             return false;
