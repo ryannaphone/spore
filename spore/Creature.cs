@@ -30,14 +30,6 @@ namespace spore
             this.deathChance = deathChance;
         }
 
-        public Creature(string name, int age, double birthRate, Func<int, double> deathChance)
-        {
-            this.name = name;
-            this.age = age;
-            this.birthRate = birthRate;
-            this.deathChance = deathChance;
-        }
-
         public override string ToString()
         {
             return this.name + " the " + this.age + " year old creature";
