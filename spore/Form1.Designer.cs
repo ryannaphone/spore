@@ -38,29 +38,29 @@
             yearLabel = new Label();
             speedUpButton = new Button();
             speedDownButton = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
             button6 = new Button();
+            comboBox1 = new ComboBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(46, 188);
+            button1.Location = new Point(35, 147);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
-            button1.Size = new Size(381, 58);
+            button1.Size = new Size(81, 45);
             button1.TabIndex = 0;
-            button1.Text = "Add a Random Creature";
+            button1.Text = "Add";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(103, 119);
+            label1.Location = new Point(79, 93);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(97, 41);
+            label1.Size = new Size(78, 32);
             label1.TabIndex = 1;
             label1.Text = "label1";
             // 
@@ -72,44 +72,48 @@
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 41;
-            listBox1.Location = new Point(488, 12);
+            listBox1.Location = new Point(373, 9);
+            listBox1.Margin = new Padding(2, 2, 2, 2);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(837, 865);
+            listBox1.Size = new Size(641, 676);
             listBox1.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(252, 121);
+            label2.Location = new Point(193, 94);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(139, 41);
+            label2.Size = new Size(111, 32);
             label2.TabIndex = 3;
             label2.Text = "creatures";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(26, 19);
+            label3.Location = new Point(20, 15);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(73, 41);
+            label3.Size = new Size(58, 32);
             label3.TabIndex = 4;
             label3.Text = "Year";
             // 
             // yearLabel
             // 
             yearLabel.AutoSize = true;
-            yearLabel.Location = new Point(103, 19);
+            yearLabel.Location = new Point(79, 15);
+            yearLabel.Margin = new Padding(2, 0, 2, 0);
             yearLabel.Name = "yearLabel";
-            yearLabel.Size = new Size(46, 41);
+            yearLabel.Size = new Size(37, 32);
             yearLabel.TabIndex = 5;
             yearLabel.Text = "-1";
             // 
             // speedUpButton
             // 
-            speedUpButton.Location = new Point(207, 23);
+            speedUpButton.Location = new Point(158, 18);
+            speedUpButton.Margin = new Padding(2, 2, 2, 2);
             speedUpButton.Name = "speedUpButton";
-            speedUpButton.Size = new Size(57, 58);
+            speedUpButton.Size = new Size(44, 45);
             speedUpButton.TabIndex = 6;
             speedUpButton.Text = "+";
             speedUpButton.UseVisualStyleBackColor = true;
@@ -117,74 +121,54 @@
             // 
             // speedDownButton
             // 
-            speedDownButton.Location = new Point(270, 23);
+            speedDownButton.Location = new Point(206, 18);
+            speedDownButton.Margin = new Padding(2, 2, 2, 2);
             speedDownButton.Name = "speedDownButton";
-            speedDownButton.Size = new Size(57, 58);
+            speedDownButton.Size = new Size(44, 45);
             speedDownButton.TabIndex = 7;
             speedDownButton.Text = "-";
             speedDownButton.UseVisualStyleBackColor = true;
             speedDownButton.Click += speedDownButton_Click;
             // 
-            // button2
-            // 
-            button2.Location = new Point(46, 268);
-            button2.Name = "button2";
-            button2.Size = new Size(381, 58);
-            button2.TabIndex = 8;
-            button2.Text = "Add 10 Random Creature";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(46, 346);
-            button3.Name = "button3";
-            button3.Size = new Size(381, 58);
-            button3.TabIndex = 9;
-            button3.Text = "Add 100 Random Creature";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(46, 419);
-            button4.Name = "button4";
-            button4.Size = new Size(381, 58);
-            button4.TabIndex = 10;
-            button4.Text = "Add 1000 Random Creature";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(46, 496);
-            button5.Name = "button5";
-            button5.Size = new Size(381, 58);
-            button5.TabIndex = 11;
-            button5.Text = "Add 10000 Random Creature";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
-            // 
             // button6
             // 
-            button6.Location = new Point(344, 19);
+            button6.Location = new Point(263, 15);
+            button6.Margin = new Padding(2, 2, 2, 2);
             button6.Name = "button6";
-            button6.Size = new Size(123, 58);
+            button6.Size = new Size(94, 45);
             button6.TabIndex = 12;
             button6.Text = "Pause";
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "1", "10", "100", "1000", "10000" });
+            comboBox1.Location = new Point(121, 150);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(111, 40);
+            comboBox1.TabIndex = 13;
+            comboBox1.Text = "1";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(238, 153);
+            label4.Name = "label4";
+            label4.Size = new Size(125, 32);
+            label4.TabIndex = 14;
+            label4.Text = "creature(s)";
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1333, 890);
+            ClientSize = new Size(1019, 695);
+            Controls.Add(label4);
+            Controls.Add(comboBox1);
             Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
             Controls.Add(speedDownButton);
             Controls.Add(speedUpButton);
             Controls.Add(yearLabel);
@@ -193,6 +177,7 @@
             Controls.Add(listBox1);
             Controls.Add(label1);
             Controls.Add(button1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -210,10 +195,8 @@
         private Label yearLabel;
         private Button speedUpButton;
         private Button speedDownButton;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
         private Button button6;
+        private ComboBox comboBox1;
+        private Label label4;
     }
 }

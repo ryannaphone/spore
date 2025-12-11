@@ -4,6 +4,7 @@ namespace spore
     {
         Creature[] creatures = []; // declare our creature arrary, we will use it later
         public int year = 1;
+        public int creaturesToAdd = 1;
         public Form1()
         {
             InitializeComponent(); // create our window elements and stuff
@@ -12,7 +13,10 @@ namespace spore
 
         private void button1_Click(object sender, EventArgs e) // this method gets called when we click our button
         {
-            creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
+            for (int i = 0; i < creaturesToAdd; i++)
+            {
+                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
+            }
         }
 
         public static Creature[] extendCreatures(Creature[] creatures, Creature c)
@@ -146,38 +150,6 @@ namespace spore
             if (timer1.Interval + 100 < 5000) timer1.Interval += 100;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 100; i++)
-            {
-                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 1000; i++)
-            {
-                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 10000; i++)
-            {
-                creatures = extendCreatures(creatures, randomCreature()); // adds a new creature to our creatures array
-            }
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
             if (timer1.Enabled)
@@ -201,6 +173,15 @@ namespace spore
             }
 
             return false;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex == 0) { this.creaturesToAdd = 1; }
+            else if (comboBox1.SelectedIndex == 1) { this.creaturesToAdd = 10; }
+            else if (comboBox1.SelectedIndex == 2) { this.creaturesToAdd = 100; }
+            else if (comboBox1.SelectedIndex == 3) { this.creaturesToAdd = 1000; }
+            else if (comboBox1.SelectedIndex == 4) { this.creaturesToAdd = 10000; }
         }
     }
 }
