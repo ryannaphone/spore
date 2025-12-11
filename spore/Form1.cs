@@ -202,5 +202,23 @@ namespace spore
 
             return false;
         }
+
+        private void checkboxCustomData_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkboxCustomData.Checked)
+            {
+                textBox1.Enabled = true;
+                textBox2.Enabled = true;
+            }
+            else
+            {
+                textBox1.Enabled = false;
+                textBox2.Enabled = false;
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e) { }
+
+        private void label5_Click(object sender, EventArgs e) { }
     }
 }
